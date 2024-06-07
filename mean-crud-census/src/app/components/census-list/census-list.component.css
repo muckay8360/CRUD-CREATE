@@ -1,0 +1,10 @@
+th {
+    padding-left: 7px;
+    padding-right: 25px;
+}
+
+label {
+    display: block;
+    float: left;
+    width: 200px;
+}

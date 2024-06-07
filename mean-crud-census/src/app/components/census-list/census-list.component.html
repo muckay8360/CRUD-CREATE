@@ -1,0 +1,73 @@
+<div class="container">
+  <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+    <h2 class="h2">Census Records List</h2>
+  </div>
+  <div class="table-responsive">
+    <table class="table table-bordered">
+      <thead>
+        <tr>          
+          <td></td><th scope="col">Year of Census</th>
+          <th scope="col">Census Taker's Name</th>
+          <th scope="col">Number of People in Household</th>
+          <th scope="col">Household State</th>
+          <th scope="col">Household City</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let census of Censuses; let i = index">
+          <th scope="row">
+          <td>{{census.yearofcensus}}</td>
+          <td>{{census.censustakername}}</td>
+          <td>{{census.numberofpeople}}</td>
+          <td>{{census.state}}</td>
+          <td>{{census.city}}</td>         
+
+          <td class="text-center">
+            <button class="btn btn-sm btn-primary" (click)="onUpdateCensus(census)">Update</button>
+            <button class="btn btn-sm btn-primary" (click)="onDelete(census._id)">Delete</button>
+       
+          </td>
+        </tr>
+        <tr *ngIf="EditForm">
+          <td colspan="7">
+            <div class="edit-form">
+              <h2>Census Record Update</h2>
+              <form (ngSubmit)="onUpdate()">
+                <div class="form-group">
+                  <label for="numberofpeople">Number of People in Household</label>
+                  <input type="text" id="numberofpeople" [(ngModel)]="censuschanges.numberofpeople" name="numberofpeople" class="form-control">
+                </div>
+                <h3>Household Address</h3>
+                <div class="form-group">
+                  <label for="street">Street</label>
+                  <input type="text" id="street" [(ngModel)]="censuschanges.street" name="street" class="form-control">
+                </div>
+                <div class="form-group">
+                  <label for="city">City</label>
+                  <input type="text" id="city" [(ngModel)]="censuschanges.city" name="city" class="form-control">
+                </div>
+                <div class="form-group">
+                  <label for="description">State</label>
+                  <input type="text" id="state" [(ngModel)]="censuschanges.state" name="state" class="form-control">
+                </div>
+                <div class="form-group">
+                  <label for="zipcode">Zip Code</label>
+                  <input type="text" id="zipcode" [(ngModel)]="censuschanges.zipcode" name="published_year" class="form-control">
+                </div>
+                <div class="form-group">
+                  <label for="yearofcensus">Year (of the Census)</label>
+                  <input type="text" id="yearofcensus" [(ngModel)]="censuschanges.yearofcensus" name="yearofcensus" class="form-control">
+                </div>
+                <div class="form-group">
+                  <label for="censustakername">Census Taker's Name</label>
+                  <input type="text" id="censustakername" [(ngModel)]="censuschanges.censustakername" name="censustakername" class="form-control">
+                </div>                
+                <button type="submit" class="btn btn-primary">Apply Changes</button>
+              </form>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
